@@ -1,0 +1,251 @@
+/* Garante que o tamanho dos elementos inclua as bordas e preenchimentos sem quebrar o layout */
+* { box-sizing: border-box; }
+
+/* Fundo da página com um degradê azul e verde bem suave e fonte limpa */
+body { 
+    margin: 0; 
+    font-family: 'Segoe UI', system-ui, sans-serif; 
+    background: linear-gradient(135deg, #CDE7FF 0%, #EBF7FF 50%, #D2F7D7 100%); 
+    color: #0E2A47; 
+    min-height: 100vh; 
+    -webkit-font-smoothing: antialiased; /* Deixa as letras mais nítidas na tela */
+}
+
+/* Menu do topo semi-transparente com efeito de vidro borrado */
+header { 
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(220,240,255,0.5)); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border-bottom: 2px solid rgba(255,255,255,0.6); 
+    box-shadow: 0 4px 20px rgba(0,90,180,0.12); 
+    padding: 12px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+/* Título principal do sistema com um leve brilho azul ao fundo */
+header h1 { 
+    margin: 0; 
+    font-size: 20px; 
+    color: #0066CC; 
+    text-shadow: 0 1px 2px #FFF, 0 0 10px rgba(56,189,248,0.5); 
+}
+
+/* Links do menu com transição suave para quando o mouse passar por cima */
+nav a { 
+    color: #0055AA; 
+    margin-left: 16px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 13px; 
+    text-shadow: 0 1px 1px #FFF; 
+    transition: 0.2s; 
+}
+nav a:hover { 
+    color: #00AAFF; 
+    text-shadow: 0 0 8px #0AF, 0 1px 1px #FFF; 
+}
+
+/* Espaçamento geral do conteúdo principal */
+main { 
+    max-width: 100%; 
+    margin: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+/* Alinha a barra de busca e os elementos na mesma linha */
+.busca, .linha { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    width: 100%; 
+}
+.busca input { 
+    flex: 1; 
+    max-width: 350px; 
+}
+
+/* Estilo arredondado para campos de texto, caixas de seleção e botões */
+input, select, button, .acoes a { 
+    border-radius: 20px; 
+    padding: 6px 14px; 
+    font-size: 13px; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    font-weight: 600; 
+}
+
+/* Visual dos campos de texto com um degradê interno bem sutil */
+input, select { 
+    background: linear-gradient(to bottom, #FFF, #F4FAFF); 
+    border: 1px solid #A2C7E5; 
+    color: #0F2D4A; 
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); 
+}
+/* Quando clica no campo de texto, brilha uma borda azul */
+input:focus, select:focus { 
+    outline: none; 
+    border-color: #3399FF; 
+    box-shadow: 0 0 8px rgba(51,153,255,0.6); 
+}
+
+/* Botão padrão azul no estilo "Web 2.0" (com brilhos e sombras em 3D) */
+button { 
+    background: linear-gradient(to bottom, #52C4FF 0%, #0088FF 45%, #0066CC 50%, #0077EE 100%); 
+    color: #FFF; 
+    border: 1px solid #0055AA; 
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.2); 
+    box-shadow: 0 2px 6px rgba(0,70,150,0.2), inset 0 1px 2px #FFF; 
+    cursor: pointer; 
+}
+button:hover { 
+    background: linear-gradient(to bottom, #7AD0FF 0%, #1A94FF 45%, #0077EE 50%, #1A94FF 100%); 
+    box-shadow: 0 4px 12px rgba(0,119,255,0.4), inset 0 1px 3px #FFF; 
+}
+
+/* Botão vermelho para ações de perigo ou exclusão */
+button.perigo { 
+    background: linear-gradient(to bottom, #FF768E 0%, #FF3355 45%, #D61133 50%, #E62244 100%); 
+    border-color: #A3001C; 
+}
+
+/* TRUQUE DO GRID: Transforma tabelas comuns em uma grade de "cards" (usado na listagem de livros) */
+table { 
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important; 
+    gap: 16px !important; 
+    width: 100%; 
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+}
+thead, th { display: none !important; } /* Esconde o cabeçalho da tabela de livros */
+tbody { display: contents !important; } 
+
+/* Cada linha (TR) vira um card flutuante */
+tr { 
+    display: flex !important; 
+    flex-direction: column; 
+    gap: 8px; 
+    background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(240,250,255,0.4) 100%); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+    border: 2px solid rgba(255,255,255,0.8); 
+    border-radius: 20px; 
+    padding: 16px; 
+    box-shadow: 0 6px 16px rgba(0,90,180,0.06), inset 0 1px 3px #FFF; 
+    transition: 0.25s; 
+    cursor: pointer; 
+    height: 100%; 
+    justify-content: space-between; 
+}
+/* Efeito de aumentar de tamanho e subir levemente ao passar o mouse no card */
+tr:hover { 
+    transform: scale(1.04) translateY(-4px); 
+    border-color: rgba(51,153,255,0.5); 
+    box-shadow: 0 12px 28px rgba(0,100,230,0.15), inset 0 1px 5px #FFF; 
+}
+td { display: block !important; padding: 0; border: none; font-size: 13px; color: #1E3A5F; }
+/* Destaca o primeiro dado do card (que costuma ser o título do livro) */
+td:first-child { font-weight: 700; font-size: 16px; color: #0052A3; line-height: 1.2; }
+
+/* EXCEÇÃO: Desfaz o truque dos cards na página de empréstimos, forçando ela a voltar a ser uma tabela normal */
+.pagina-emprestimos table { 
+    display: table !important; 
+    width: 100%; 
+    border-collapse: separate !important; 
+    border-spacing: 0 !important; 
+    background: rgba(255, 255, 255, 0.75) !important; 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+    border: 2px solid rgba(255, 255, 255, 0.8) !important; 
+    border-radius: 16px !important; 
+    overflow: hidden !important; 
+    box-shadow: 0 4px 15px rgba(0,90,180,0.06) !important; 
+}
+.pagina-emprestimos thead { display: table-header-group !important; }
+.pagina-emprestimos tbody { display: table-row-group !important; }
+.pagina-emprestimos tr { 
+    display: table-row !important; 
+    background: transparent !important; 
+    box-shadow: none !important; 
+    border: none !important; 
+    cursor: default !important; 
+}
+.pagina-emprestimos tr:hover { transform: none !important; } /* Tira o efeito de subir na tabela normal */
+
+/* Estilo do cabeçalho azul da tabela de empréstimos */
+.pagina-emprestimos th { 
+    display: table-cell !important; 
+    background: linear-gradient(to bottom, #52C4FF, #0088FF) !important; 
+    color: #FFF !important; 
+    font-weight: 600; 
+    padding: 12px; 
+    text-align: left; 
+    font-size: 14px; 
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.2); 
+    border-bottom: 2px solid #0055AA !important; 
+}
+/* Células da tabela de empréstimos */
+.pagina-emprestimos td { 
+    display: table-cell !important; 
+    padding: 12px !important; 
+    border-bottom: 1px solid rgba(162, 199, 229, 0.4) !important; 
+    color: #0E2A47 !important; 
+    font-size: 13px !important; 
+    background: rgba(255, 255, 255, 0.3) !important; 
+    font-weight: normal !important; 
+}
+.pagina-emprestimos tr:last-child td { border-bottom: none !important; } /* Tira a linha preta do último item */
+.pagina-emprestimos tr:hover td { background: rgba(51, 153, 255, 0.15) !important; } /* Efeito de acender a linha ao passar o mouse */
+
+/* Área e botões de ação do card (como o botão verde de editar) */
+.acoes { display: flex; gap: 6px; margin-top: auto; padding-top: 8px; width: 100%; }
+.acoes a { 
+    color: #005A20; 
+    text-decoration: none; 
+    text-shadow: 0 1px 1px rgba(255,255,255,0.3); 
+    background: linear-gradient(to bottom, #A2FFA2 0%, #44DD44 45%, #22AA22 50%, #33BB33 100%); 
+    border: 1px solid #117722; 
+    text-align: center; 
+    flex: 1; 
+    padding: 5px; 
+    box-shadow: 0 2px 4px rgba(0,50,10,0.1); 
+}
+.acoes a:hover { 
+    background: linear-gradient(to bottom, #C2FFC2 0%, #66EE66 45%, #33BB33 50%, #44CC44 100%); 
+    box-shadow: 0 4px 8px rgba(0,50,10,0.2); 
+}
+
+/* Caixa de formulário (ficha) em formato grid com tom esverdeado */
+.ficha { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 12px; 
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(226,249,229,0.5)); 
+    border: 2px solid rgba(255,255,255,0.9); 
+    padding: 16px; 
+    border-radius: 24px; 
+    box-shadow: 0 6px 20px rgba(0,90,180,0.04); 
+}
+.ficha label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 12px; color: #1E4620; }
+
+/* Caixa de alerta verde-água para as mensagens de sucesso */
+.aviso { 
+    background: linear-gradient(to bottom, #E6FFFA, #B2F5EA); 
+    border: 1px solid #4FD1C5; 
+    color: #006B6F; 
+    padding: 8px 16px; 
+    border-radius: 16px; 
+    font-size: 12px; 
+    font-weight: 600; 
+    box-shadow: 0 4px 12px rgba(79,209,197,0.15); 
+}
+
+/* Estilo simples para textos de contagem ou totais */
+.total { color: #0066CC; font-weight: 700; font-size: 13px; }
+
+/* Rodapé centralizado e discreto lá embaixo */
+footer { text-align: center; color: #5588B3; padding: 20px 0; font-size: 12px; font-weight: 500; }
